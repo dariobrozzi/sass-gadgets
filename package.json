@@ -1,0 +1,11 @@
+{
+  "name": "@dariobrozzi/sass-gadgets",
+  "version": "0.1.0",
+  "author": {
+    "name": "Dario Brozzi",
+    "email": "dbrozzi@gmail.com"
+  },
+  "dependencies": {
+    "sass": "^1.26.5"
+  }
+}
