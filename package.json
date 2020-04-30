@@ -7,5 +7,8 @@
   },
   "dependencies": {
     "sass": "^1.26.5"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }
