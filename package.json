@@ -5,13 +5,12 @@
     "name": "Dario Brozzi",
     "email": "dbrozzi@gmail.com"
   },
-  "dependencies": {
-    "sass": "^1.26.5"
-  },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
   "files": [
-    "fonts.scss"
+    "settings",
+    "gadgets",
+    "index.scss"
   ]
 }

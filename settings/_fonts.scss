@@ -2,12 +2,15 @@
 $gadgets-font-stacks: (
         georgia: 'Georgia, Times, "Times New Roman", serif',
         arial: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
-        arialblack: '"Arial Black", "Arial Bold", Gadget, sans-serif'
+        arialnarrow: '"Arial Narrow", Arial, sans-serif',
+        arialblack: '"Arial Black", "Arial Bold", Gadget, sans-serif',
+        avantgarde: '"Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, AppleGothic, sans-serif',
+        calibri: 'Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif',
+        candara: 'Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif',
+        centurygothic: '"Century Gothic", CenturyGothic, AppleGothic, sans-serif'
 );
 
-
 // Sets
-
 $gadgets-font-sets: (
         large:(
                 font-size: 24px,
@@ -30,13 +33,3 @@ $gadgets-font-sets: (
                 font-weight: 600
         )
 );
-
-// Gadgets
-
-@mixin getFontSet() {
-
-}
-
-@mixin setFontStack($font) {
-  font-family: map-get($gadgets-font-stacks, $font);
-}
