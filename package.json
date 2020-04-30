@@ -10,5 +10,8 @@
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
-  }
+  },
+  "files": [
+    "fonts.scss"
+  ]
 }
