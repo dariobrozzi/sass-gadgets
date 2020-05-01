@@ -1,0 +1,16 @@
+@mixin flexCols($wrap: false) {
+  @include flex($wrap);
+  flex-direction: row;
+}
+
+@mixin flexRows($wrap: false) {
+  @include flex($wrap);
+  flex-direction: column;
+}
+
+@mixin flex($wrap: false) {
+  display: flex;
+  @if $wrap {
+    flex-wrap: wrap;
+  }
+}

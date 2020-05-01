@@ -1,0 +1,16 @@
+@mixin buttonPrimary() {
+
+}
+
+@mixin buttonSeconday() {
+
+}
+
+@mixin button() {
+  background: $button-primary-back;
+  @if $theme-is-supported {
+
+  } @else {
+
+  }
+}

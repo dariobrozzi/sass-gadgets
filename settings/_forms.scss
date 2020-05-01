@@ -1,0 +1,12 @@
+$button-primary-themes: (
+        light:(
+                background: $color-green-techcrunch,
+                color: $color-white,
+                border-color: $color-green-newsvine
+        ),
+        dark:(
+                background: $color-orange-rss,
+                color: $color-white,
+                border-color: $color-orange-vermillion
+        )
+) !default;
