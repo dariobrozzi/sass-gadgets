@@ -1,8 +1,0 @@
-
-@mixin fontStack($font) {
-  font-family: #{map-get($font-stacks, $font)};
-}
-
-@mixin fontSet() {
-
-}

@@ -1,0 +1,34 @@
+@mixin flexCols($wrap: false) {
+  @include flex($wrap);
+  flex-direction: row;
+}
+
+@mixin flexRows($wrap: false) {
+  @include flex($wrap);
+  flex-direction: column;
+}
+
+@mixin flex($wrap: false) {
+  display: flex;
+  @if $wrap {
+    flex-wrap: wrap;
+  }
+}
+
+// WIP - add map with different breakpoints and rules
+@mixin mediaWrapper() {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+@mixin mediaDown($size) {
+  @media (max-width: #{$size - 1px}) {
+    @content
+  }
+}
+
+@mixin mediaUp($size) {
+  @media (min-width: #{$size}px) {
+    @content
+  }
+}

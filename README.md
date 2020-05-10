@@ -1,4 +1,7 @@
 # SASS Gadgets
+
+(Draft Version)
+
 Just another SASS library, but based on W3C Standards and ITCSS concept. Having just the settings and tools(gadgets) layers for help you building your design system.
 
 No attached to predefined ClassNames and overrides.
@@ -28,31 +31,66 @@ Then:
 <code>npm install @dariobrozzi/sass-gadgets</code>
 
 ### How to use it
+
+#### The Basis
+
+Get all library and using a namespace
+
+<pre>
 <code>
-    @use '~@dariobrozzi/sass-gadgets/index' as gadgets;
-    
-    @include g.resetDOM();
-    
-    body {
-      @include g.fontStack(arial);
-    
-      background: g.$color-black;
-      color: g.$color-white;
-    }
-    
-    h1, h2, h3, h4, h5, h6 {
-      @include g.fontStack(georgia);
-    }
-    
-    button {
-      @include g.button();
-    }
+@use '~@dariobrozzi/sass-gadgets/all' as gadgets;
 
+// then use it
+body {
+    @include gadgets.fontStack(georgia);
+}
 </code>
+</pre>
 
-- Just import what you need. Variables, tools, or both.
-- Rewrite variables so you can setup your fonts, colors, paddings and so on.
-- Call mixins into your components or ClassNames selectos.
+#### With Settings
+
+Create a file '_gadgets.scss' at vendor or where you want. Do a forward from package.
+Then at your main styles, use it passing the variables want to replace.
+
+<pre><code>
+// _gadgets.scss
+@forward '~@dariobrozzi/sass-gadgets/all';
+
+// styles.scss
+@use 'gadgets' with (
+    $entities: 'html, body, div, button, h1, h2, p, em, blockquote, code, pre',
+);
+
+// then use it
+@include gadgets.resetDOM();
+</code></pre>
+
+### Using Fonts
+<pre>
+<code>
+    // set font family
+    @include gadgets.fontStack(arialnarrow);
+        
+    // set all properties defined on sets
+    @include gadgets.fontSet(large);
+    
+    // set just font size defined on sets
+    @include gadgets.fontSize(normal);
+</code>
+</pre>
+
+
+### Using FontAwesome Icons
+
+<pre><code>
+$your-assets-path: 'assets/fonts';
+@include gadgets.initializeFontAwesome($your-assets-path);
+
+a.linkedin:before {
+    @include gadgets.iconFontAwesome(linkedin, brands);
+}
+</code></pre>
+
 
 More info and examples comming next weeks.
 

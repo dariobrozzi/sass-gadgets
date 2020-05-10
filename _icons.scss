@@ -1,0 +1,54 @@
+@use 'sass:map';
+@use 'sass:string';
+@use "vendor/fontawesome" as fa;
+
+$icons-initialize-fa-sets: 'regular', 'solid', 'brands' !default;
+
+$_sets: (
+        regular: (
+                font-family: 'Font Awesome 5 Free',
+                font-weight: 400
+        ),
+        solid: (
+                font-family: 'Font Awesome 5 Free',
+                font-weight: 900
+        ),
+        brands: (
+                font-family: 'Font Awesome 5 Brands',
+                font-weight: 400
+        ),
+);
+
+@mixin mapProperties($name) {
+  $properties: map.get($_sets, #{$name});
+  @each $property, $value in $properties {
+    #{$property}: $value;
+  }
+}
+
+@mixin iconFontAwesome($icon-name, $type: regular) {
+  $content: map.get(fa.$icons, $icon-name);
+  @if $content != null {
+    @include mapProperties($type);
+    content: $content;
+  } @else {
+    @error "Invalid `#{$icon-name}`Font Awesome (v5)";
+  }
+}
+
+@mixin initializeFontAwesome($your-assets-path) {
+  @each $set in $icons-initialize-fa-sets {
+    $weight: map.get(map.get($_sets, $set), 'font-weight');
+    @font-face {
+      @include mapProperties($set);
+      font-style: normal;
+      font-display: block;
+      src: url('#{$your-assets-path}/fa-#{$set}-#{$weight}.eot');
+      src: url('#{$your-assets-path}/fa-#{$set}-#{$weight}.eot?#iefix') format('embedded-opentype'),
+      url('#{$your-assets-path}/fa-#{$set}-#{$weight}.woff2') format('woff2'),
+      url('#{$your-assets-path}/fa-#{$set}-#{$weight}.woff') format('woff'),
+      url('#{$your-assets-path}/fa-#{$set}-#{$weight}.ttf') format('truetype'),
+      url('#{$your-assets-path}/fa-#{$set}-#{$weight}.svg#fontawesome') format('svg');
+    }
+  }
+}

@@ -1,0 +1,62 @@
+@use "colors";
+
+$disabled-opacity: .3 !default;
+
+$button-structure: (
+        border: 1px solid,
+        border-radius: 4px,
+        padding: 5px 10px
+) !default;
+
+$button-font: (
+        font-size: 12px,
+        line-height: 16px,
+        text-transform: uppercase,
+        letter-spacing: .3em
+) !default;
+
+$buttons: (
+        default:(
+                background: colors.$color-gray-shadows,
+                color: colors.$color-white,
+                border-color: colors.$color-gray-shadows,
+        ),
+        main:(
+                background: colors.$color-green-techcrunch,
+                color: colors.$color-white,
+                border-color: colors.$color-green-newsvine
+        )
+) !default;
+
+@mixin button($type: default) {
+  @include buttonStructure();
+  &:not(:disabled):not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+  &:disabled, &[aria-disabled="true"] {
+    opacity: $disabled-opacity;
+  }
+}
+
+@mixin buttonBase() {
+  @each $property, $value in $button-structure {
+    #{$property}: #{$value};
+  }
+  @each $property, $value in $button-font {
+    #{$property}: #{$value};
+  }
+}
+
+@mixin buttons($modifier: '&.') {
+  @include buttonBase();
+  @each $button, $properties in $buttons {
+
+    #{$modifier+$button} {
+      @each $property, $value in $properties {
+        #{$property}: #{$value};
+      }
+    }
+  }
+}
+
+

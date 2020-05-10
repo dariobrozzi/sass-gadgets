@@ -1,3 +1,5 @@
+@use "sass:map";
+
 // Stacks
 $font-stacks: (
         georgia: 'Georgia, Times, "Times New Roman", serif',
@@ -7,15 +9,21 @@ $font-stacks: (
         avantgarde: '"Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, AppleGothic, sans-serif',
         calibri: 'Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif',
         candara: 'Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif',
-        centurygothic: '"Century Gothic", CenturyGothic, AppleGothic, sans-serif'
-);
+        centurygothic: '"Century Gothic", CenturyGothic, AppleGothic, sans-serif',
+        courier: '"Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace'
+) !default;
 
 // Sets
 $font-sets: (
+        x-large:(
+                font-size: 36px,
+                line-height: 1.5,
+                font-weight: 500
+        ),
         large:(
                 font-size: 24px,
                 line-height: 1.5,
-                font-weight: 600
+                font-weight: 500
         ),
         medium:(
                 font-size: 18px,
@@ -31,5 +39,25 @@ $font-sets: (
                 font-size: 12px,
                 line-height: 1.5,
                 font-weight: 600
+        ),
+        x-small:(
+                font-size: 11px,
+                line-height: 1.5,
+                font-weight: 600
         )
-);
+) !default;
+
+@mixin fontStack($name) {
+  font-family: #{map.get($font-stacks, $name)};
+}
+
+@mixin fontSet($size) {
+  $properties: map.get($font-sets, $size);
+  @each $property, $value in $properties {
+    #{$property}: #{$value};
+  }
+}
+
+@mixin fontSize($size) {
+  font-size: map.get(map.get($font-sets, $size), 'font-size');
+}

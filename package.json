@@ -1,6 +1,6 @@
 {
   "name": "@dariobrozzi/sass-gadgets",
-  "version": "0.1.7",
+  "version": "0.2.0",
   "author": {
     "name": "Dario Brozzi",
     "email": "dbrozzi@gmail.com"
@@ -9,8 +9,6 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "files": [
-    "settings",
-    "gadgets",
-    "index.scss"
+    "*.scss, vendor/*.scss"
   ]
 }
