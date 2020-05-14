@@ -9,6 +9,6 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "files": [
-    "*.scss, vendor/*.scss"
+    "*.scss", "vendor/*.scss"
   ]
 }

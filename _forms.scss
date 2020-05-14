@@ -1,4 +1,5 @@
 @use "colors";
+@use "sass:map";
 
 $disabled-opacity: .3 !default;
 
@@ -9,10 +10,10 @@ $button-structure: (
 ) !default;
 
 $button-font: (
-        font-size: 12px,
-        line-height: 16px,
-        text-transform: uppercase,
-        letter-spacing: .3em
+        font-size: 16px,
+        line-height: 20px,
+        text-decoration: none,
+        letter-spacing: .1em
 ) !default;
 
 $buttons: (
@@ -29,16 +30,20 @@ $buttons: (
 ) !default;
 
 @mixin button($type: default) {
-  @include buttonStructure();
+  @include buttonBase();
+  $properties: map.get($buttons, $type);
+  @each $property, $value in $properties {
+    #{$property}: #{$value};
+  }
+}
+
+@mixin buttonBase() {
   &:not(:disabled):not([aria-disabled="true"]) {
     cursor: pointer;
   }
   &:disabled, &[aria-disabled="true"] {
     opacity: $disabled-opacity;
   }
-}
-
-@mixin buttonBase() {
   @each $property, $value in $button-structure {
     #{$property}: #{$value};
   }
@@ -50,7 +55,6 @@ $buttons: (
 @mixin buttons($modifier: '&.') {
   @include buttonBase();
   @each $button, $properties in $buttons {
-
     #{$modifier+$button} {
       @each $property, $value in $properties {
         #{$property}: #{$value};
