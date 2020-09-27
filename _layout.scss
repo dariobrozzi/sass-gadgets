@@ -15,11 +15,13 @@
   }
 }
 
-// WIP - add map with different breakpoints and rules
-@mixin mediaWrapper() {
-  max-width: 1024px;
-  margin: 0 auto;
-}
+
+$media-breakpoint-rules: (
+                (0, 15px, null),
+                (480, 30px, null),
+                (768, 60px, null),
+                (1024, 0, 1000px)
+) !default;
 
 @mixin mediaDown($size) {
   @media (max-width: #{$size - 1px}) {
@@ -30,5 +32,25 @@
 @mixin mediaUp($size) {
   @media (min-width: #{$size}px) {
     @content
+  }
+}
+
+@mixin mediaWrapper() {
+  margin: 0 auto;
+  @each $media-rule in $media-breakpoint-rules {
+    $breakpoint: nth($media-rule, 1);
+    $padding: nth($media-rule, 2);
+    $max-width: nth($media-rule, 3);
+    @if $padding or $max-width {
+      @include mediaUp($breakpoint) {
+        @if $max-width {
+          max-width: $max-width;
+        }
+        @if $padding {
+          padding-left: $padding;
+          padding-right: $padding;
+        }
+      }
+    }
   }
 }

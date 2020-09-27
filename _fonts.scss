@@ -1,5 +1,7 @@
 @use "sass:map";
 
+$font-base: 16px;
+
 // Stacks
 $font-stacks: (
         georgia: 'Georgia, Times, "Times New Roman", serif',
@@ -58,6 +60,10 @@ $font-sets: (
   }
 }
 
-@mixin fontSize($size) {
-  font-size: map.get(map.get($font-sets, $size), 'font-size');
+@mixin fontSize($size, $unit: null) {
+  $size: map.get(map.get($font-sets, $size), 'font-size');
+  @if ($unit == 'em') or ($unit == 'rem') {
+    $size: $size / $font-base * 1 + #{$unit};
+  }
+  font-size: $size;
 }
