@@ -1,8 +1,9 @@
 @use 'sass:map';
 @use 'sass:string';
 @use "vendor/fontawesome" as fa;
+@use 'utils';
 
-$icons-initialize-fa-sets: 'regular', 'solid', 'brands' !default;
+$icons-initialize-fa-sets: 'regular, solid, brands' !default;
 
 $_sets: (
         regular: (
@@ -37,6 +38,7 @@ $_sets: (
 }
 
 @mixin initializeFontAwesome($your-assets-path) {
+  $icons-initialize-fa-sets: utils.stringToList($icons-initialize-fa-sets);
   @each $set in $icons-initialize-fa-sets {
     $weight: map.get(map.get($_sets, $set), 'font-weight');
     @font-face {

@@ -1,0 +1,15 @@
+@use 'sass:string';
+
+@function stringToList($string, $separator: ', ') {
+  $list: ();
+  $sep-length: string.length($separator);
+  $i: str-index($string, $separator);
+  @while $i != null {
+    $part: string.slice($string, 1, $i - $sep-length + 1);
+    $list: append($list, $part);
+    $string: string.slice($string, $i + $sep-length);
+    $i: string.index($string, $separator);
+  }
+  $list: append($list, $string);
+  @return $list;
+}
