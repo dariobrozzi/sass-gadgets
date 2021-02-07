@@ -2,7 +2,8 @@
 
 (Draft Version)
 
-Just another SASS library, but based on W3C Standards and ITCSS concept. Having just the settings and tools(gadgets) layers for help you building your design system.
+Just another SASS library. Based on W3C Standards and ITCSS concept file structure. 
+Having just the settings and tools(gadgets) layers for help you building your design system.
 
 No attached to predefined ClassNames and overrides.
 Feel free to apply gadgets into your components or create your own ClassNames selectors.
@@ -17,18 +18,10 @@ Happy coding!
 - Last SASS package version for support module system features.
 
 ### Installing
-Repository is on GitHub, so you need to add the entry to your npm config.
-Other simple way is configure your root project file <code>.npmrc</code> like:
 
 <code>
-   
-    registry=https://registry.npmjs.org
-    
-    @dariobrozzi:registry=https://npm.pkg.github.com
+   npm i sass-gadgets
 </code>
-
-Then:
-<code>npm install @dariobrozzi/sass-gadgets</code>
 
 ### How to use it
 
@@ -38,7 +31,7 @@ Get all library and using a namespace
 
 <pre>
 <code>
-@use '~@dariobrozzi/sass-gadgets/all' as gadgets;
+@use '~sass-gadgets/all' as gadgets;
 
 // then use it
 body {
@@ -52,30 +45,30 @@ body {
 Create a file '_gadgets.scss' at vendor or where you want. Do a forward from package.
 Then at your main styles, use it passing the variables want to replace.
 
-<pre><code>
-// _gadgets.scss
-@forward '~@dariobrozzi/sass-gadgets/all';
+<pre><code>// _gadgets.scss
 
-// styles.scss
+@forward '~sass-gadgets/all';
+</code></pre>
+
+<pre><code>// styles.scss
+
 @use 'gadgets' with (
     $entities: 'html, body, div, button, h1, h2, p, em, blockquote, code, pre',
 );
 
-// then use it
 @include gadgets.resetDOM();
 </code></pre>
 
 ### Using Fonts
 <pre>
-<code>
-    // set font family
-    @include gadgets.fontStack(arialnarrow);
-        
-    // set all properties defined on sets
-    @include gadgets.fontSet(large);
+<code>// set font family
+@include gadgets.fontStack(arialnarrow);
     
-    // set just font size defined on sets
-    @include gadgets.fontSize(normal);
+// set all properties defined on sets
+@include gadgets.fontSet(large);
+    
+// set just font size defined on sets
+@include gadgets.fontSize(normal);
 </code>
 </pre>
 
@@ -84,6 +77,7 @@ Then at your main styles, use it passing the variables want to replace.
 
 <pre><code>
 $your-assets-path: 'assets/fonts';
+
 @include gadgets.initializeFontAwesome($your-assets-path);
 
 a.linkedin:before {
@@ -91,8 +85,6 @@ a.linkedin:before {
 }
 </code></pre>
 
-
-More info and examples comming next weeks.
 
 ## Authors
 

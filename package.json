@@ -1,12 +1,10 @@
 {
-  "name": "@dariobrozzi/sass-gadgets",
-  "version": "0.2.3",
-  "author": {
-    "name": "Dario Brozzi",
-    "email": "dbrozzi@gmail.com"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+  "name": "sass-gadgets",
+  "version": "0.0.2",
+  "author": "Dario Brozzi <dbrozzi@gmail.com> (http://www.dariobrozzi.com/)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dariobrozzi/sass-gadgets.git"
   },
   "files": [
     "*.scss",
